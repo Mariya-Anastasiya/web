@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Письмо</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f6f6f6;
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-spacing: 0;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        .header,
+        .footer {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .header td {
+            padding: 20px 10px;
+        }
+
+        .header img {
+            display: block;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .content img {
+            width: 100%;
+            height: auto;
+        }
+
+        .products img {
+            width: 100%;
+            height: auto;
+	    max-width: 250px;
+        }
+
+        .products td {
+            padding: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0;
+            background-color: #007bff;
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        @media screen and (max-width: 600px) {
+               .two-columns {
+                display: block;
+                width: 100%;
+            }
+
+            .two-columns td {
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <!-- Шапка -->
+        <tr class="header">
+            <td>
+                <img src="logo.png" alt="Логотип" width="150">
+            </td>
+            <td align="right">
+                <a href="tel:+77777777777" style="color: #ffffff; text-decoration: none;">+7 (777) 777-77-77</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="content">
+                <img src="photo1.jpg" alt="Летние скидки">
+            </td>
+        </tr>
+        <!-- Товары -->
+        <tr class="products two-columns">
+            <td>
+                <img src="photo2.jpg" alt="Помада">
+                <p><strong>Помада "Вечерний шик"</strong></p>
+		<p><strong>Новая цена: 990 рублей</strong></p>
+            </td>
+            <td>
+                <img src="photo3.jpg" alt="Туш">
+                <p><strong>Тушь для ресниц "Объем без границ"</strong></p>
+		<p><strong>Новая цена: 790 рублей.</strong></p>
+            </td>
+        </tr>
+        <tr class="products two-columns">
+            <td>
+                <img src="photo4.png" alt="Палетка теней">
+               <p><strong>Тени для век "Магия сияния"</strong></p>
+		<p><strong>Новая цена: 290 рублей.</strong></p>
+            </td>
+            <td>
+                <img src="photo5.png" alt="Тональная основа">
+                <p><strong>Тональный крем "Идеальное покрытие"</strong></p>
+		<p><strong>Новая цена: 1490 рублей.</strong></p>
+            </td>
+        </tr>
+        <!-- Небольшой текст -->
+        <tr>
+            <td colspan="2" class="content">
+                <p>Кроме представленных товаров, у нас есть еще много других косметических средств, доступных по специальной цене! Переходите по кнопке ниже, чтобы увидеть полный ассортимент со скидками до 40%. Обновите свой макияж и уход за кожей с нами по самым выгодным условиям этого лета!</p>
+            </td>
+        </tr>
+        <!-- Кнопка -->
+        <tr>
+            <td colspan="2" class="content" align="center">
+                <a href="#" class="button">Перейти к предложению</a>
+            </td>
+        </tr>
+        <!-- Футер -->
+        <tr class="footer">
+            <td colspan="2" align="center">
+                <p>&copy; 2024 Жирнова М.И. mariya.zhirnowa@yandex.ru</p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
