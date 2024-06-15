@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрационная форма</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Регистрационная форма</h2>
+        <form action="check.php" method="post" enctype="multipart/form-data" id="registration-form">
+            <!-- Личная информация -->
+            <fieldset>
+                <legend>Личная информация</legend>
+                <div class="form-group">
+                    <label for="lastname">Фамилия <span class="required">*</span></label>
+                    <input type="text" id="lastname" name="lastname" pattern="[А-Яа-яЁё]+" required>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Имя <span class="required">*</span></label>
+                    <input type="text" id="firstname" name="firstname" pattern="[А-Яа-яЁё]+" required>
+                </div>
+                <div class="form-group">
+                    <label for="middlename">Отчество</label>
+                    <input type="text" id="middlename" name="middlename" pattern="[А-Яа-яЁё]+">
+                </div>
+                <div class="form-group">
+                    <label>Пол <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="gender" value="male" required> Мужской</label>
+                        <label><input type="radio" name="gender" value="female"> Женский</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="eyecolor">Цвет глаз <span class="required">*</span></label>
+                    <input type="color" id="eyecolor" name="eyecolor" value="#000000" required>
+                    <span id="selected-color"></span>
+                </div>
+                <div class="form-group">
+                    <label for="birthdate">Дата рождения <span class="required">*</span></label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Возраст <span class="required">*</span></label>
+                    <input type="number" id="age" name="age" min="18" max="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="birthplace">Место рождения <span class="required">*</span></label>
+                    <!-- Используем Datalist для поиска в списке -->
+                    <input type="text" id="birthplace" name="birthplace" list="cities" required>
+                    <datalist id="cities">
+                        <option value="Москва">
+                        <option value="Санкт-Петербург">
+                        <option value="Новосибирск">
+                        <option value="Екатеринбург">
+                        <!-- Другие варианты мест рождения -->
+                    </datalist>
+                </div>
+            </fieldset>
+            
+            <!-- Контактная информация -->
+            <fieldset>
+                <legend>Контактная информация</legend>
+                <div class="form-group">
+                    <label for="index">Индекс <span class="required">*</span></label>
+                    <input type="text" id="index" name="index" pattern="\d{6}" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Домашний адрес <span class="required">*</span></label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="registrationdate">Дата регистрации <span class="required">*</span></label>
+                    <input type="date" id="registrationdate" name="registrationdate" required>
+                </div>
+                 <div class="form-group">
+                    <label for="phone">Номер телефона <span class="required">*</span></label>
+                    <!-- Используем pattern для автоматической валидации -->
+                    <input type="tel" id="phone" name="phone" pattern="\+7-\d{3}-\d{3}-\d{2}-\d{2}" placeholder="+7-xxx-xxx-xx-xx" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </fieldset>
+            
+            <!-- Общая информация -->
+            <fieldset>
+                <legend>Общая информация</legend>
+                <div class="form-group">
+                    <label for="passport">Скриншот первой страницы паспорта клиента (jpeg) <span class="required">*</span></label>
+                    <input type="file" id="passport" name="passport" accept="image/jpeg" required>
+                    <small class="error-message" style="display:none; color:red;">Пожалуйста, загрузите файл в формате JPEG.</small>
+                </div>
+                   <div class="form-group">
+                   <label for="howdidyouknow">Откуда узнали о магазине? <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="howdidyouknow[]" value="Интернет"> Интернет</label>
+                        <label><input type="checkbox" name="howdidyouknow[]" value="Реклама"> Реклама</label>
+                        <label><input type="checkbox" name="howdidyouknow[]" value="Друзья"> Друзья</label>
+                        <label><input type="checkbox" name="howdidyouknow[]" value="Социальные сети"> Социальные сети</label>
+                        <!-- Другие варианты -->
+                    </div>
+                </div>
+            </fieldset>
+            
+ 
+                <div class="form-group">
+                    <label for="agree">
+                        <input type="checkbox" id="agree" name="agree" required>
+                        Я согласен с условиями обработки и хранения персональных данных <span class="required">*</span>
+                    </label>
+                </div>
+      
+
+            <!-- Кнопки -->
+            <div class="form-group">
+                <button type="submit">Отправить</button>
+                <button type="reset">Очистить</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+
+ function formatPhone(e) {
+            // Получаем текущее значение без разделителей
+            let input = e.target.value.replace(/\D/g, '');
+            
+            // Форматируем номер телефона только если он введен полностью
+            if (input.length === 11) {
+                let formattedNumber = '+7-' + input.substring(1, 4) + '-' + input.substring(4, 7) + '-' + input.substring(7, 9) + '-' + input.substring(9, 11);
+                e.target.value = formattedNumber;
+            } else {
+                // В противном случае оставляем введенное значение без изменений
+                e.target.value = '+' + input;
+            }
+        }
+
+        // Назначаем обработчик на событие input для поля phone
+        document.getElementById('phone').addEventListener('input', formatPhone);
+
+        document.getElementById('passport').addEventListener('change', function() {
+            var file = this.files[0];
+            var errorMessage = document.querySelector('.error-message');
+            if (file.type !== 'image/jpeg') {
+                errorMessage.style.display = 'inline';
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
